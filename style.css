@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+section>h1 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+
+    font-size: 10em;
+
+    color: rgb(33, 40, 15);
+    text-shadow: 0 0 10px rgb(255, 255, 255),
+    0 0 50px white,
+    0 0 200px rgba(255, 255, 255, 0.585);
+
+    transform: translate(-50%, -50%);
+}
+
+span {
+    border: 3px solid rgba(96, 112, 69, 0.478);
+    border-radius: 50%;
+    animation: rise 3s ease infinite;
+}
+
+section span::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(white, transparent);
+    border-radius: 50%;
+    transform: scale(0.25) translate(-70%, -70%);
+}
+
+
+@keyframes rise {
+    0% {
+        position: absolute;
+        top: 100%;
+    }
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        position: absolute;
+        top: -10%;
+    }
+}
+
+#degrade {
+    background-image: linear-gradient(to right, rgb(211, 211, 211), gray);
+    height: 100vh;
+    width: 500vw;
+    background-size: 500% 100%;
+    animation: degrade 1s infinite alternate;
+}
+
+#degrade {
+    height: 100%;
+    width: 100%;
+
+    background-image: linear-gradient(45deg, black, rgb(74, 120, 97), black);
+    background-size: 500% 100%;
+    animation: anmdegra 2s infinite;
+    transition: 2s;
+}
+@keyframes anmdegra {
+    0% {
+        background-position-x: 0%;
+    }
+
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+#start {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+
+    height: 70px;
+    width: 200px;
+
+    border-radius: 20px;
+
+    background-color: rgba(240, 248, 255, 0.293);
+    border: 5px solid black;
+
+    transform: translate(-50%, -50%);
+}
+
+#start > a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 5em;
+    text-decoration: none;
+
+    color: rgb(91, 155, 133);
+
+    transform: translate(-50%, -50%);
+}
+
+#start:hover {
+    background-color: rgb(111, 52, 52);
+    transition: 2s;
+}
+
+#afir {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 5em;
+    text-decoration: none;
+
+    color: rgb(91, 155, 133);
+
+    transform: translate(-50%, -50%);
+}
+
+.end {
+    animation: end 2s 1 forwards;
+}
+
+#qui {
+    animation: end 0.01s 1 forwards;
+}
+
+@keyframes end {
+    0% {
+
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        display: none;
+    }
+}
