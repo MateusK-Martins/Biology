@@ -105,7 +105,7 @@ section span::before{
     transform: translate(-50%, -50%);
 }
 
-#start > a {
+#start > h2 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -142,6 +142,86 @@ section span::before{
 
 #qui {
     animation: end 0.01s 1 forwards;
+}
+
+#afir {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+
+    height: 300px;
+    width: 700px;
+
+    background-color: rgb(0, 255, 17);
+
+    border-radius: 10px;
+
+    transform: translate(-50%, -50%);
+}
+
+#afir:hover{
+    animation: sh3d 2s ease 1 ;
+}
+
+@keyframes sh3d {
+
+    0%{
+        box-shadow: 0px 0px 0px solid rgb(0, 255, 17);
+    }
+
+    100% {
+        box-shadow: 10px 10px 200px 0 solid rgb(0, 255, 17);
+    }
+    
+}
+
+#true, #false {
+    
+    height: 70px;
+    width: 400px;
+
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+#true {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+
+    background-color: green;
+
+    transform: translate(-50%, -50%);
+}
+
+#true > h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 3em;
+
+    transform: translate(-50%, -50%);
+}
+
+#false {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+
+    background-color: red;
+
+    transform: translate(-50%, -50%);
+}
+
+#false>h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 3em;
+
+    transform: translate(-50%, -50%);
 }
 
 @keyframes end {

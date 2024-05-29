@@ -23,5 +23,5 @@ const qui = document.querySelector('#qui')
 
 start.addEventListener('click',()=>{
     begin.classList.toggle('end')
-    qui.style.display = 'block'
+    qui.style.animation = 'backwards'
 })
