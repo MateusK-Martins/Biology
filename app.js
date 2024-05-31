@@ -19,9 +19,26 @@ setInterval(createbubble, 500)
 
 const start = document.querySelector('#start');
 const begin = document.querySelector('#begin')
-const qui = document.querySelector('#qui')
+const qui1 = document.querySelector('#qui1')
+const qui2 = document.querySelector('#qui2')
+const true = document.querySelector('#true')
+var number = 0
+
+qui1.classList.toggle('none');
+qui2.classList.toggle('none');
 
 start.addEventListener('click',()=>{
     begin.classList.toggle('end')
-    qui.style.animation = 'backwards'
+    let number = Math.random() * 2
+    console.log(number)
+    if(number > 0 && number < 1){
+        qui1.classList.toggle('enter');
+        qui1.classList.remove('none')
+    }
+    else if(number > 1 && number < 2){
+        qui2.classList.toggle('enter');
+        qui2.classList.remove('none');
+    }
 })
+
+

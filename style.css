@@ -136,12 +136,41 @@ section span::before{
     transform: translate(-50%, -50%);
 }
 
+.none {
+    animation: end 0.01s 1 forwards;
+}
+.enter {
+    animation: enter 2s 1 forwards;
+}
+
+
+@keyframes enter {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 .end {
     animation: end 2s 1 forwards;
 }
 
-#qui {
-    animation: end 0.01s 1 forwards;
+
+@keyframes end {
+    0% {
+
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        display: none;
+    }
 }
 
 #afir {
@@ -159,20 +188,9 @@ section span::before{
     transform: translate(-50%, -50%);
 }
 
-#afir:hover{
-    animation: sh3d 2s ease 1 ;
-}
 
-@keyframes sh3d {
-
-    0%{
-        box-shadow: 0px 0px 0px solid rgb(0, 255, 17);
-    }
-
-    100% {
-        box-shadow: 10px 10px 200px 0 solid rgb(0, 255, 17);
-    }
-    
+#afir, #true, #false {
+    transition: 1s;
 }
 
 #true, #false {
@@ -222,18 +240,4 @@ section span::before{
     font-size: 3em;
 
     transform: translate(-50%, -50%);
-}
-
-@keyframes end {
-    0% {
-
-    }
-
-    99% {
-        opacity: 0;
-    }
-
-    100% {
-        display: none;
-    }
 }
