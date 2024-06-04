@@ -13,6 +13,10 @@ html, #degrade, body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+:root{
+    --complete: 1%;
+}
+
 #degrade {
     position: absolute;
     top: calc(50% - 50vh);
@@ -194,13 +198,37 @@ html, #degrade, body {
 }
 
 .inf {
-    font-size: 4.5em;
+    font-size: 2em;
     color: aqua;
-    text-indent: 20px;
+    text-indent: 90px;
+}
+
+#progress {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+
+    height: 35px;
+    width: 200px;
+
+    display: block;
+    border: 7px solid aqua;
+
+    color: transparent;
+}
+
+#complete {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 25px;
+    width:  var(--complete);
+
+    background-color: aqua;
 }
 
 #p {
     display: flex;
     align-content: end;
-    text-indent: 70vw;
+    text-indent: 50vw;
 }
