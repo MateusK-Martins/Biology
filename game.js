@@ -4,6 +4,11 @@ const nq = document.getElementById('q');
 const p = document.getElementById('p');
 const actualp = document.querySelector('actualp');
 
+var elemento = document.getElementById('meuElemento');
+var estilo = getComputedStyle(elemento);
+var perc = estilo.getPropertyValue('--complete');
+
+const maxq = 3
 let available = [0, 0, 0];
 let actual = 0;
 let points = 0;
@@ -107,6 +112,8 @@ function upd() {
     actual += 1;
     nq.textContent = `${actual}/${questions.length}`;
     p.innerHTML = `${points}`;
+    var percat = (100 / maxq) * perc;
+    document.documentElement.style.setProperty('--complete', ${percat},  '%');
 }
 
 startgame();
