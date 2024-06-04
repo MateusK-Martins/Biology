@@ -203,30 +203,6 @@ html, #degrade, body {
     text-indent: 90px;
 }
 
-#progress {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-
-    height: 35px;
-    width: 200px;
-
-    display: block;
-    border: 7px solid aqua;
-
-    color: transparent;
-}
-
-#complete {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    height: 25px;
-    width:  var(--complete);
-
-    background-color: aqua;
-}
-
 #p {
     display: flex;
     align-content: end;
