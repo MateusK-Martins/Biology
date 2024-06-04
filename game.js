@@ -101,7 +101,6 @@ function end() {
 function startgame() {
     newq();
     correct();
-    scores();
     upd();
 }
 
@@ -110,9 +109,4 @@ function upd() {
     nq.textContent = `${actual}/${questions.length}`;
     p.textContent = `${points}`;
 }
-
-function scores() {
-    actualp.textContent = `Pontos atuais: ${points}`;
-}
-
 startgame();
