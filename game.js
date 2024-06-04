@@ -79,7 +79,6 @@ function handleChoice(event) {
     } else {
         selectedChoice.classList.add('incorrect');
     }
-    scores(); // Call scores function to update points display
     setTimeout(() => {
         newq();
     }, 1000);
