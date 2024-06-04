@@ -79,7 +79,6 @@ function handleChoice(event) {
     } else {
         selectedChoice.classList.add('incorrect');
     }
-    /--
     setTimeout(() => {
         newq();
     }, 1000);
