@@ -1,96 +1,119 @@
 const perg = document.querySelector('.perg');
-const choices = Array.from(document.getElementsByClassName('content-choice'));
-console.log(choices);
-const pontos = document.getElementById('acertos');
+        const choices = Array.from(document.getElementsByClassName('content-choice'));
+        console.log(choices);
+        const nq = document.getElementById('q');
+        const p = document.getElementById('p');
 
+        let available = [0, 0, 0];
+        var actual = 0;
+        var pontos = 0;
 
-let currentquestions = {};
-let acceptingAnswers = false;
-let score = 0;
-let questionCounter = 0;
-let availableQuestions = [];
+        let cont = 0
+        available.forEach(i =>{
+            if(i === 0){
+                cont += 1;
+            }
+        })
 
-let questions = [
-    {
-        perg: "Biologia",
-        choice1: "ruim",
-        choice2: "éeeeé..",
-        choice3: "bom",
-        choice4: "muito bom",
-        answer: 1
-    },
-    {
-        perg: "evolucionismo é importante",
-        choice1: "sim muito",
-        choice2: "não",
-        choice3: "acho que sim",
-        choice4: "sla",
-        answer: 1
-    },
-    {
-        perg: "pq voce esta aqui",
-        choice1: "participo da equipe",
-        choice2: "não sei",
-        choice3: "acessei pelo link",
-        choice4: "sou professor",
-        answer: 3
-    },
-]
-const correctBonus = 10;
-const maxQuestions = 3;
+        let questions = [
+            {
+                q: 1,
+                perg: "Biologia",
+                choice1: "ruim",
+                choice2: "éeeeé..",
+                choice3: "bom",
+                choice4: "muito bom",
+                answer: 4
+            },
+            {
+                q: 2,
+                perg: "Evolucionismo é importante",
+                choice1: "sim muito",
+                choice2: "não",
+                choice3: "acho que sim",
+                choice4: "sla",
+                answer: 1
+            },
+            {
+                q: 3,
+                perg: "quem foi wallace",
+                choice1: "sim muito",
+                choice2: "não",
+                choice3: "acho que sim",
+                choice4: "sla",
+                answer: 4
+            }
+        ];
 
-getnewquestion = ()=>{
-    if(availableQuestions.length === 0 || questionCounter > maxQuestions){
-        return window.location.assign('end.html')
-    }
-    questionCounter++;
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentquestions = availableQuestions[questionIndex];
-    perg.innerText = currentquestions.perg;
+        let actualq;
+        let c = false;
 
-    choices.forEach(choice =>{
-        const number = choice.dataset.number
-        choice.innerText = currentquestions['choice' + number]
-    })
+        function newq() {
+            upd();
+            if (available.every(status => status === 1)) {
+                c = true;
+                return c;
+            }
 
-    availableQuestions.splice(questionIndex, 1);
-    acceptingAnswers = true
-}
+            let questionNumber;
+            let ok = true;
 
-choices.forEach(choice => {
-    choice.addEventListener('click', e => {
-        if (!acceptingAnswers) return;
+            while (ok) {
+                questionNumber = Math.floor(Math.random() * questions.length) + 1; 
+                actualq = questions.find(obj => obj.q === questionNumber);
 
-        acceptingAnswers = false;
-        const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset.number;
+                if (available[actualq.q - 1] === 0) {
+                    ok = false;
+                }
+            }
 
-        if (selectedAnswer == currentquestions.answer) {
-            score += correctBonus;
+            perg.innerText = actualq.perg;
+            choices.forEach((choice, index) => {
+                choice.innerText = actualq[`choice${index + 1}`];
+                choice.classList.remove('correct', 'incorrect');
+            });
+
+            available[actualq.q - 1] = 1;
+            console.log(available, ' ', actualq.q);
         }
 
-        const classtoaply = selectedAnswer == currentquestions.answer ? 'correct' : 'incorrect';
+        function correct() {
+            let correct = 'correct';
+            let incorrect = 'incorrect';
+            choices.forEach((choice) => {
+                choice.addEventListener('click', () => {
+                    choices.forEach(c => c.classList.remove('correct', 'incorrect'));
+                    if (parseInt(choice.dataset.number) === actualq.answer) {
+                        choice.classList.add(correct);
+                    } else {
+                        choice.classList.add(incorrect);
+                    }
+                    setTimeout(()=>{
+                        newq();
+                        end();
+                    },1000)
+                    console.log(nq)
+                    choices.forEach(c => c.removeEventListener('click', handleChoice));
+                });
+            });
+        }
 
-        selectedChoice.parentElement.classList.add(classtoaply);
-        setTimeout(()=>{
-            selectedChoice.parentElement.classList.remove(classtoaply);
-            getnewquestion();
-        },1000)
+        function end(){
+            if(c === true){
+                window.location.assign('end.html');
+                console.log(c)
+            }
+        }
 
+        function startgame() {
+            newq();
+            correct();
+        }
 
+        function upd(){
+            actual += 1;
+            nq.textContent = `${actual}/${cont}`;
+            p.innerHTML = `${pontos}`;
+        }
 
-
-    });
-});
-
-startgame = () => {
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questions];
-    getnewquestion();
-}
-
-startgame()
-
-
-
+        startgame();
