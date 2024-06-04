@@ -2,33 +2,43 @@ const perg = document.querySelector('.perg');
 const choices = Array.from(document.getElementsByClassName('content-choice'));
 const nq = document.getElementById('q');
 const p = document.getElementById('p');
-const actualp = document.querySelector('.actualp'); // Corrigindo a seleção do elemento
-const maxq = 3;
+const actualp = document.getElementById('actualp');
+
 let available = [0, 0, 0];
 let actual = 0;
 let points = 0;
 
-const questions = [
+let questions = [
     {
         q: 1,
         perg: "Biologia",
-        choices: ["ruim", "éeeeé..", "bom", "muito bom"],
+        choice1: "ruim",
+        choice2: "éeeeé..",
+        choice3: "bom",
+        choice4: "muito bom",
         answer: 4
     },
     {
         q: 2,
         perg: "Evolucionismo é importante",
-        choices: ["sim muito", "não", "acho que sim", "sla"],
+        choice1: "sim muito",
+        choice2: "não",
+        choice3: "acho que sim",
+        choice4: "sla",
         answer: 1
     },
     {
         q: 3,
         perg: "quem foi wallace",
-        choices: ["sim muito", "não", "acho que sim", "sla"],
+        choice1: "sim muito",
+        choice2: "não",
+        choice3: "acho que sim",
+        choice4: "sla",
         answer: 4
     }
 ];
 
+let actualq;
 let gameOver = false;
 
 function newq() {
@@ -42,8 +52,8 @@ function newq() {
     let ok = true;
 
     while (ok) {
-        questionNumber = Math.floor(Math.random() * questions.length);
-        actualq = questions[questionNumber];
+        questionNumber = Math.floor(Math.random() * questions.length) + 1; 
+        actualq = questions.find(obj => obj.q === questionNumber);
 
         if (available[actualq.q - 1] === 0) {
             ok = false;
@@ -51,21 +61,16 @@ function newq() {
     }
 
     perg.innerText = actualq.perg;
-    actualp.textContent = `${actual + 1}/${questions.length}`; // Atualizando a exibição do número da pergunta
-    p.textContent = points; // Atualizando a exibição dos pontos
-
-    actual += 1;
     choices.forEach((choice, index) => {
-        choice.innerText = actualq.choices[index];
+        choice.innerText = actualq[`choice${index + 1}`];
         choice.classList.remove('correct', 'incorrect');
-        choice.dataset.number = index + 1; // Atualizando o atributo de dataset para identificar a resposta
     });
 
     available[actualq.q - 1] = 1;
+    console.log(available, ' ', actualq.q);
 }
 
 function handleChoice(event) {
-    if (gameOver) return; // Evita que o usuário selecione uma opção após o término do jogo
     const selectedChoice = event.target;
     choices.forEach(c => c.classList.remove('correct', 'incorrect'));
     if (parseInt(selectedChoice.dataset.number) === actualq.answer) {
@@ -74,25 +79,40 @@ function handleChoice(event) {
     } else {
         selectedChoice.classList.add('incorrect');
     }
+    scores(); // Call scores function to update points display
     setTimeout(() => {
         newq();
     }, 1000);
 }
 
-function end() {
-    if (gameOver === true) {
-        // Aqui você pode fazer algo como mostrar uma mensagem com a pontuação final em vez de redirecionar
-        console.log("Game Over. Pontuação Final:", points);
-        // window.location.assign('end.html');
-    }
-}
-
-function startgame() {
-    newq();
+function correct() {
     choices.forEach((choice) => {
         choice.addEventListener('click', handleChoice);
     });
 }
 
-startgame();
+function end() {
+    if (gameOver === true) {
+        window.location.assign('end.html');
+        console.log(gameOver);
+    }
+}
 
+function startgame() {
+    newq();
+    correct();
+    scores();
+    upd();
+}
+
+function upd() {
+    actual += 1;
+    nq.textContent = `${actual}/${questions.length}`;
+    p.textContent = `${points}`;
+}
+
+function scores() {
+    actualp.textContent = `Pontos atuais: ${points}`;
+}
+
+startgame();
