@@ -232,7 +232,6 @@ html, #degrade, body {
 @media (min-width: 500px){
 
     #p{
-        text-indent: 65vw;
         font-size: 5em;
         transition: 1s;
     }
@@ -250,7 +249,6 @@ html, #degrade, body {
 @media (min-width: 700px){
 
     #p{
-        text-indent: 70vw;
         font-size: 5em;
         transition: 1s;
     }
@@ -272,7 +270,4 @@ html, #degrade, body {
         font-size: 3em;
         transition: 1s;
     }
-=======
-    text-indent: 50vw;
->>>>>>> 5d7d5e2b5c5d246dc79f619448a047a7b624668d
 }
