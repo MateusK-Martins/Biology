@@ -232,7 +232,7 @@ html, #degrade, body {
 @media (min-width: 500px){
 
     #p{
-        text-indent: 70vw;
+        text-indent: 65vw;
         font-size: 5em;
         transition: 1s;
     }
