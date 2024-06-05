@@ -213,7 +213,7 @@ html, #degrade, body {
     text-indent: 10px;
 =======
     font-size: 2em;
-    color: aqua;
+    color: black;
     text-indent: 90px;
 >>>>>>> 5d7d5e2b5c5d246dc79f619448a047a7b624668d
 }
@@ -222,6 +222,8 @@ html, #degrade, body {
     display: flex;
     align-content: end;
 <<<<<<< HEAD
+    color: black;
+
     text-indent: 65vw;
 }
 
