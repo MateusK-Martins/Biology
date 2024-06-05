@@ -207,41 +207,51 @@ html, #degrade, body {
 }
 
 .inf {
-<<<<<<< HEAD
     font-size: 3em;
     color: rgb(0, 0, 0);
     text-indent: 10px;
-=======
     font-size: 2em;
     color: black;
-    text-indent: 90px;
->>>>>>> 5d7d5e2b5c5d246dc79f619448a047a7b624668d
+    text-indent: 50px;
+
 }
 
 #p {
+    position: absolute;
+    left: 55%;
     display: flex;
     align-content: end;
-<<<<<<< HEAD
     color: black;
 
-    text-indent: 65vw;
+    text-indent: 130px;
 }
 
-
-
-@media (min-width: 500px){
+@media (min-width: 150px){
 
     #p{
         font-size: 5em;
         transition: 1s;
     }
+
     .inf {
         font-size: 5em;
         transition: 1s;
     }
+    
+}
 
-    .perg > p {
-        font-size: 2em;
+
+@media (min-width: 600px){
+
+    #p{
+        position: absolute;
+        left: 70%;
+        font-size: 5em;
+        transition: 1s;
+    }
+
+    .inf {
+        font-size: 5em;
         transition: 1s;
     }
 }
@@ -249,6 +259,8 @@ html, #degrade, body {
 @media (min-width: 700px){
 
     #p{
+        position: absolute;
+        left: 70%;
         font-size: 5em;
         transition: 1s;
     }
@@ -265,6 +277,28 @@ html, #degrade, body {
 
 
 @media (min-width: 1000px){
+
+    #p{
+        position: absolute;
+        left: 80%;
+        font-size: 5em;
+        transition: 1s;
+    }
+
+    .perg > p {
+        font-size: 3em;
+        transition: 1s;
+    }
+}
+
+@media (min-width: 1500px){
+
+    #p{
+        position: absolute;
+        left: 90%;
+        font-size: 5em;
+        transition: 1s;
+    }
 
     .perg > p {
         font-size: 3em;
